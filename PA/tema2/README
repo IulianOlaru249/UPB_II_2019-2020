@@ -1,0 +1,55 @@
+Olaru Gabriel Iulian
+324CC
+
+*Note: each solution has been implemented on top of the code skel from the lab*
+*******************************************************************************
+1.
+
+This solution takes O(log n * (2n + m)) time.
+
+    This solution uses something resembling a binary search. First, block the
+first half of the cities and check if Robin is safe. If he is not safe, 
+try block 3/4 of the cities and so on. If he is safe, look for a better
+solution by trying to block only 1/2 of cities and so on. The search has a
+logarithmic complexity, times the complexity necesary to block and unblock 
+cities - O(n) plus the complexity of the BFS.
+    BFS is used to check if we can reach any of the nodes that the lords are in
+from the source node. BFS will only take into account unblocked nodes. An array
+keeps track of the blocked nodes. The solution is not good if any lord city can 
+be reached from the source city, meaning the distance from source to that city
+is not +inf. BFS will take O(n + m) time.
+
+*******************************************************************************
+2.
+
+This solution takes O(n * m + n + m) time.
+
+    This solution uses an adaptation of the bellman-ford algorithm becauses
+the shortest path (the oane that saves most energy) is required and
+there can be edges with negative cost. This version of the algorithm 
+does only one pass because it will work on a graph sorted in topological
+order. The bellman ford pass takes O(n * m).
+    It si possible to use the topological sort because the graph is directed
+and does not have cycles. When considering a node in topologicly sorted, it is
+duaranteed that every in-edge has been taken into account. In order to find the
+best path, we just have to relax the cost of all outgoing edges of that node with
+a single pass of bellman-ford.
+    The topological sort is implemented with DFS and takes O(n + m) time.
+
+*******************************************************************************
+3.
+
+This solution takes O(m log n + n) time.
+
+    This solution uses dijkstra's algorithm because the shortest path (the oane
+that saves most energy) is required. Instead of judging distance by the 
+weight of the edge, we will decide if a path is better if it saves more
+energy. Dijkstra implemented with a set (to act as a min-heap) takes O(m log n).
+    Robin starts with the maximum energy and choses the edges thate take the
+least effort. The edges are stored in a set, orderd by how much of the initial
+energy they take. A path is considered better if the energy that it takes is
+less that other paths.
+    The path is reconstructed based on a vector of parrents. We keep hopping 
+from parent to parent (recursively so that the path in not in reverse) and
+at each step the energy is updated with how much that edge costs.
+This takes O(n time).

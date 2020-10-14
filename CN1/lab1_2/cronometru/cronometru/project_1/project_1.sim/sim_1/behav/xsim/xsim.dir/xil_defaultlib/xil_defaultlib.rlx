@@ -1,0 +1,9 @@
+0.6
+2019.2
+Nov  6 2019
+21:42:20
+/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sim_1/new/bin2bcd_sim.v,1583826064,verilog,,,,bin2bcd_sim,,,,,,,,
+/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sim_1/new/counter_sim.v,1589260417,verilog,,,,counter_sim,,,,,,,,
+/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sources_1/new/bin2bcd.v,1583825728,verilog,,/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sim_1/new/bin2bcd_sim.v,,bin2bcd,,,,,,,,
+/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sources_1/new/numarator_0_59.v,1589260647,verilog,,/home/ghostpants/Documents/facultateAn2/CN1/lab1_2/cronometru/cronometru/project_1/project_1.srcs/sim_1/new/counter_sim.v,,Numarator,,,,,,,,

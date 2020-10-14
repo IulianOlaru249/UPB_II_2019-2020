@@ -1,0 +1,11 @@
+Olaru Gabriel Iulian
+324 CC
+
+Primul client se poate deconecta doar dupa ce seteaza un numar.
+Daca se deocnecteaza inainte se inchide jocul.
+Atunci cand un numar este ghicit corect toti deconectati dar nu se mentioneaza numarul.
+
+
+Clientul trebuie rulat ./client id ip port
+id -ul nu o s aaibe relevanta, a ra mas in plus pentru ca am scris asta peste scheletul 
+de la tema2.

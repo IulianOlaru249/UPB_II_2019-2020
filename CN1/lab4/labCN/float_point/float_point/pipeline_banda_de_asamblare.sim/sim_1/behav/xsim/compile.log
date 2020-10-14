@@ -1,0 +1,35 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/addMantise.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module addMantise
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/alignMantise.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alignMantise
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/changeExponent.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module changeExponent
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/compareExponent.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module compareExponent
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/concat.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module concat
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/correctExponent.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module correctExponent
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/normalize.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module normalize
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/parse.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module parse
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/pipeline.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pipeline
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_exponent16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_exponent16
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_exponent8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_exponent8
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise24.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_mantise24
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise26.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_mantise26
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise48.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_mantise48
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise57.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module registre_mantise57
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sim_1/new/simulation.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module simulation
+WARNING: [VRFC 10-986] literal value truncated to fit in 32 bits [/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.srcs/sim_1/new/simulation.v:47]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ghostpants/Documents/facultateAn2/CN1/lab4/labCN/float_point/float_point/pipeline_banda_de_asamblare.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

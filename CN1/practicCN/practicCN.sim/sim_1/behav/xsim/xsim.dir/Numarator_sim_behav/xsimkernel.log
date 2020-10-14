@@ -1,0 +1,7 @@
+Running: xsim.dir/Numarator_sim_behav/xsimk -simmode gui -wdb Numarator_sim_behav.wdb -simrunnum 0 -socket 58283
+Design successfully loaded
+Design Loading Memory Usage: 43900 KB (Peak: 44020 KB)
+Design Loading CPU Usage: 20 ms
+Simulation completed
+Simulation Memory Usage: 125636 KB (Peak: 183168 KB)
+Simulation CPU Usage: 20 ms

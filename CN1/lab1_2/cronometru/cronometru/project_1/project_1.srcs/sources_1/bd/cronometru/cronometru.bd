@@ -1,0 +1,356 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x50E0B715A461759B",
+      "device": "xc7a100tcsg324-1",
+      "name": "cronometru",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2019.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "numarator_0_59_1": "",
+      "bin2bcd_0": "",
+      "bin2bcd_1": "",
+      "divizor_ceas_0": "",
+      "display_7_seg_0": "",
+      "numarator_0_59_0": ""
+    },
+    "ports": {
+      "An_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "DP_0": {
+        "direction": "O"
+      },
+      "Seg_0": {
+        "direction": "O",
+        "left": "6",
+        "right": "0"
+      },
+      "clk_in_0": {
+        "direction": "I"
+      },
+      "clk_out_led_0": {
+        "direction": "O"
+      },
+      "pause_0": {
+        "direction": "I"
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "numarator_0_59_1": {
+        "vlnv": "xilinx.com:module_ref:numarator_0_59:1.0",
+        "xci_name": "cronometru_numarator_0_59_1_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "numarator_0_59",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "pause": {
+            "direction": "I"
+          },
+          "carry_out": {
+            "direction": "O"
+          },
+          "up_counter": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          }
+        }
+      },
+      "bin2bcd_0": {
+        "vlnv": "xilinx.com:module_ref:bin2bcd:1.0",
+        "xci_name": "cronometru_bin2bcd_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "bin2bcd",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "bin_val": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "bcd0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "bcd1": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "bin2bcd_1": {
+        "vlnv": "xilinx.com:module_ref:bin2bcd:1.0",
+        "xci_name": "cronometru_bin2bcd_1_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "bin2bcd",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "bin_val": {
+            "direction": "I",
+            "left": "5",
+            "right": "0"
+          },
+          "bcd0": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "bcd1": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "divizor_ceas_0": {
+        "vlnv": "xilinx.com:module_ref:divizor_ceas:1.0",
+        "xci_name": "cronometru_divizor_ceas_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "divizor_ceas",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_in": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk_out_led": {
+            "direction": "O"
+          },
+          "clk_out_seg": {
+            "direction": "O"
+          }
+        }
+      },
+      "display_7_seg_0": {
+        "vlnv": "xilinx.com:module_ref:display_7_seg:1.0",
+        "xci_name": "cronometru_display_7_seg_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "display_7_seg",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_out_seg": {
+            "direction": "I"
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "BCD0": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD1": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD2": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "BCD3": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "An": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "Seg": {
+            "direction": "O",
+            "left": "6",
+            "right": "0"
+          },
+          "DP": {
+            "direction": "O"
+          }
+        }
+      },
+      "numarator_0_59_0": {
+        "vlnv": "xilinx.com:module_ref:numarator_0_59:1.0",
+        "xci_name": "cronometru_numarator_0_59_0_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "numarator_0_59",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "pause": {
+            "direction": "I"
+          },
+          "carry_out": {
+            "direction": "O"
+          },
+          "up_counter": {
+            "direction": "O",
+            "left": "5",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "numarator_0_59_1_up_counter": {
+        "ports": [
+          "numarator_0_59_1/up_counter",
+          "bin2bcd_0/bin_val"
+        ]
+      },
+      "bin2bcd_1_bcd0": {
+        "ports": [
+          "bin2bcd_1/bcd0",
+          "display_7_seg_0/BCD2"
+        ]
+      },
+      "bin2bcd_1_bcd1": {
+        "ports": [
+          "bin2bcd_1/bcd1",
+          "display_7_seg_0/BCD3"
+        ]
+      },
+      "bin2bcd_0_bcd0": {
+        "ports": [
+          "bin2bcd_0/bcd0",
+          "display_7_seg_0/BCD0"
+        ]
+      },
+      "bin2bcd_0_bcd1": {
+        "ports": [
+          "bin2bcd_0/bcd1",
+          "display_7_seg_0/BCD1"
+        ]
+      },
+      "divizor_ceas_0_clk_out_seg": {
+        "ports": [
+          "divizor_ceas_0/clk_out_seg",
+          "display_7_seg_0/clk_out_seg"
+        ]
+      },
+      "display_7_seg_0_An": {
+        "ports": [
+          "display_7_seg_0/An",
+          "An_0"
+        ]
+      },
+      "display_7_seg_0_DP": {
+        "ports": [
+          "display_7_seg_0/DP",
+          "DP_0"
+        ]
+      },
+      "display_7_seg_0_Seg": {
+        "ports": [
+          "display_7_seg_0/Seg",
+          "Seg_0"
+        ]
+      },
+      "clk_in_0_1": {
+        "ports": [
+          "clk_in_0",
+          "divizor_ceas_0/clk_in"
+        ]
+      },
+      "divizor_ceas_0_clk_out_led": {
+        "ports": [
+          "divizor_ceas_0/clk_out_led",
+          "clk_out_led_0",
+          "numarator_0_59_0/clk"
+        ]
+      },
+      "numarator_0_59_0_up_counter": {
+        "ports": [
+          "numarator_0_59_0/up_counter",
+          "bin2bcd_1/bin_val"
+        ]
+      },
+      "numarator_0_59_0_carry_out": {
+        "ports": [
+          "numarator_0_59_0/carry_out",
+          "numarator_0_59_1/clk"
+        ]
+      },
+      "pause_0_1": {
+        "ports": [
+          "pause_0",
+          "numarator_0_59_0/pause",
+          "numarator_0_59_1/pause"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "numarator_0_59_0/reset",
+          "numarator_0_59_1/reset",
+          "divizor_ceas_0/reset",
+          "display_7_seg_0/reset"
+        ]
+      }
+    }
+  }
+}

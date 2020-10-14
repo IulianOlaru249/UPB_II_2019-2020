@@ -1,0 +1,28 @@
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2019.2/bin/unwrapped/lnx64.o/xelab -wto 60191495d53847b8b47cdfe0f23426c2 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot simulation_behav xil_defaultlib.simulation xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.parse
+Compiling module xil_defaultlib.registre_exponent16
+Compiling module xil_defaultlib.registre_mantise48
+Compiling module xil_defaultlib.compareExponent
+Compiling module xil_defaultlib.concat
+Compiling module xil_defaultlib.registre_mantise57
+Compiling module xil_defaultlib.correctExponent
+Compiling module xil_defaultlib.alignMantise
+Compiling module xil_defaultlib.registre_exponent8
+Compiling module xil_defaultlib.addMantise
+Compiling module xil_defaultlib.registre_mantise26
+Compiling module xil_defaultlib.normalize
+Compiling module xil_defaultlib.changeExponent
+Compiling module xil_defaultlib.registre_mantise24
+Compiling module xil_defaultlib.pipeline
+Compiling module xil_defaultlib.simulation
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot simulation_behav

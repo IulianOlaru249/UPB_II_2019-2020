@@ -1,0 +1,24 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/addMantise.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/alignMantise.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/changeExponent.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/compareExponent.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/concat.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/correctExponent.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/normalize.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/parse.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/pipeline.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_exponent16.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_exponent8.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise24.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise26.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise48.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sources_1/new/registre_mantise57.v" \
+"../../../../pipeline_banda_de_asamblare.srcs/sim_1/new/simulation.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

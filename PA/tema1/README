@@ -1,0 +1,106 @@
+Olaru Gabriel Iulian
+324CC
+
+*Note: each solution has been implemented on top of the code skel from the labs*
+********************************************************************************
+1. 
+
+This solution takes O(n + log n) time and O(5n) space.
+
+a) The first bancnote can be chosen in 5 ways. The second can only be chosen 
+in 2 ways, the third also in 2 ways ans so on. Therefore there are 
+5 * 2 * ... * 2 ways to arrange the bancnotes, with as many 2s as the number of 
+bancnotes minus the first one => number_of_ways = 5 * 2^(n - 1). The power 
+function will have logarithmic complexity.
+
+- This solution takes O(log n) time and O(1) space -
+
+b) The lines of the dp matrix represent the type of bancnote available. 
+The columns represent how many bancnotes have been used already. When completing 
+a cell, we look back in the matrix, on the positions of available bancnotes. 
+Then add how many bancnotes that can appear before the current one from the 
+previos column to the current position. This way, in the end, by summing the 
+values in the last column, we will get the total number of ways to arrange the 
+bancnotes.
+
+- This solution takes O(n) time and O(5n) space -
+
+Example for rullset 2 and 3 bancnotes:
+
+    |   1   |   2   |   3      
+-----------------------------
+ 10 |   1   |   3   |   6   
+-----------------------------
+ 50 |   1   |   2   |   5   
+-----------------------------
+100 |   1   |   3   |   8   
+-----------------------------
+200 |   1   |   2   |   3   
+-----------------------------
+500 |   1   |   1   |   2   
+-----------------------------
+                    | => 24
+                    ---------
+
+********************************************************************************
+2. 
+
+This solution takes O(n * log n + n) time and O(1) space.
+
+    The fences will be sorted in decreasing order of the starting position
+so we will not have to worry about a fence that starts before the current
+one and makes it redundant. Is the starting x is equal for two fences,
+there are sorted by the finish x, in ascending order, so longer fences
+come first. When iterating trough the array, we will consider redundant the
+fence pieces that will not make the overall fence longer. We do that by
+comparing the current piece with the piece that was last placed.
+
+********************************************************************************
+3. 
+
+This solution takes O(n * m^2) time and O(n^2) space.
+
+    The lines of the dp matrix represent the children and the columns
+represent how many pieces of candy need to be handed to them.
+The cells of the matrix represent the number of ways you can split 
+the candy between the children (form 1 to current line) at a point in time. 
+When completing a cell we look back in the matrix and add in how many ways we
+can split the current number of candy - the number of candy we gave to the
+currentthild, between the rest of the children. If we try to give k candy to 
+the current child, then in how many ways can we give the rest of the candy to 
+the children before this one? We will only try for values within the interval 
+corresponding to the current child, since it is pointless to try give him more 
+or less candy than he can take.
+
+Recurrence: dp[i][j] = dp[i][j] + dp[i -1][j - k], 
+                                where k = 0..j and k is in the 
+                                interval if the current child
+
+Example for 6 pieces of candy and 3 children with the intervals
+(1, 3); (0, 2); (2, 4)
+
+        |   0   |   1   |   2   |   3   |   4   |   5   |   6    
+-----------------------------------------------------------------
+      0 |   0   |   0   |   0   |   0   |   0   |   0   |   0
+-----------------------------------------------------------------
+(1,3) 1 |   0   |   1   |   1   |   1   |   0   |   0   |   0
+-----------------------------------------------------------------
+(0,2) 2 |   1   |   1   |   2   |   3   |   2   |   1   |   0
+-----------------------------------------------------------------
+(2,4) 3 |   0   |   0   |   0   |   1   |   3   |   6   |   7
+-----------------------------------------------------------------
+                                                        | => 7 
+                                                        ---------
+
+********************************************************************************
+4. 
+
+This solution takes O(n * log n + n-m) time and O(1) space.
+
+    The array of weights is sorted is descending order of weight. This way we 
+make sure that the heavyest weights are out of the way. We iterate
+trough the first M elements of the array, computing the gained musscle at each
+step and updating the max value (because Gigen can pick less than M weights).
+After that the last weight is removed (don't count it by subtracting the numer
+of reps) and the next one from the weights array is added (adding the number of
+its reps to the previous reps count) and, if it is case, max gain is updated.

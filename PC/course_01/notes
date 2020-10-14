@@ -1,0 +1,97 @@
+graful mare e spart in sisteme intermediare si subretele.
+
+statia1 -> transmite in jos datele, nivelul transport face segmentarea (tcp)-> 
+nivelul retea plaseaza catre egatura de date si dupa catre interdfata.
+
+nivelul retea are fct de -dirijarea datagramelor;
+						 -adresarea;
+
+_______________________________________________________________________________
+ipv4 packadge: 
+
+heder leangth = cate cuvinjte trebuie citite pt partea de header;
+total length = lingimea totala a pachetului;
+identification flags, fragment offset = fragmentarea datelor in retea;
+time to leave = cat ramane pachetul in retea (masurat in hopuri sau secunde);
+protocol = catre ce protocol de nivel transport ar trebui sa forwardez (tcp, udp, etc)
+header checksum = a verifica ca nu s-a intamplat ceva cu hader-ul pachetului - CRC16
+adresele (32 biti) = byte.byte.byte.byte <=> ip(destination) address
+optins (may be ommited)
+padding = umple pana la 32 daca nu s-au umplut destule iptiuni
+data
+_______________________________________________________________________________
+
+fragmentarea: partea de date se imparte in mai multe unitati si fiecare unitate
+este preluata intr-un pachet separart.
+Asamblarea se face la destinati eptc pachete distince pot urma cai distincte si
+nu voi stii unde ajung. Singurul punct in ncare ajung toate pachetele este destinatia.
+_______________________________________________________________________________
+
+Clase de adrese
+
+In functie de primul bit se aloca organizatiilor o clasa de adrese.
+
+clasa A multe adrese locale, mai putine interne -extrema stanga-
+clasa B serveste mai putine organizatii dar are mai multe noduri -intermediar-
+clasa C -pe invers- -extremadreapta-
+clasa D clasa multicase (broadcast) toate entitatile vor primi pachetele respective
+
+adresa specificata clasa B si toti biti pt host sunt 0 => verific reteaua
+adresa specificata clasa B si toti biti pt host sunt 1 => broadcast
+
+uzual: byte.byte.byte.byte
+_______________________________________________________________________________
+
+tabela de dirijare:
+
+protocoale rutate: cara informatia esentiala
+protocoale de rutare: doar actualizeaza tabelele de rutare 
+	(iau decizii privind calea pe care pachetele ruate o iau)
+
+de unde stie next hop?
+se stabileste static sau protocoalele descopera din aproape in aproape.
+
+la booting, ca sa primeas apc-ul o adresa ip bazata pe gateway, se foloseste protocolul rarp.
+_______________________________________________________________________________
+
+Subretele (ip subnets)
+de ex, pt o calsa C, sunt multe adrese neutilizate.
+fix1: se imparte in subretele
+fix2: renuntam la clase de adrese (CIDR)
+
+obs: daca sunt mai multe potriviri se alege potrivirea cea mai lunga
+pt reducerea dimensiunii tabelelor: orice merge catre adresa de retea care se 
+potriveste ajunge catre next hop (de ex Anglia) in next hop se separa pachetele.
+_______________________________________________________________________________
+
+adrese private: nu se ruteaza in internet
+10.0.0.0
+172.16.0.0 - 172.31.0.0
+192.168.0.0 - 192.168.255.0
+
+(adresa Retea) Gateway ----- HOST1 (adresa privata)
+					   |
+					   ----- HOST2 (adresa privata)
+
+usecase: In reteaua interna nu vreau sa aloc adrese mai multor hosturi. 
+Deci aloc o singura adresa publica  gateway-ului si pt fiecare host aloc o adresa privata.
+
+protocolul : NAT network address translation
+
+*******************************************************************************
+Test:
+
+1.Adresa 172.15.0.13 este o adresa IP privata?
+Răspunsul corect este "Fals".
+
+2.In headerul IP, campul TTL arata in cat timp, in secunde, i se permite unui pachet sa ramana in retea?
+Răspunsul corect este "Adevărat".
+
+3.NAT realizeaza o translatare intre o adresa IP interna/privata si o adresa fizica din retea?
+Răspunsul corect este "Fals".
+
+4.Open Shortest Path First (OSPF) realizarea rutarea intre sisteme autonome?
+Răspunsul corect este "Fals".
+
+5.IP (Internet Protocol) este un protocol nefiabil si functioneaza intr-un mod fara conexiune?
+Răspunsul corect este "Adevărat".

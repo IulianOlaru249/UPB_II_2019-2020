@@ -1,0 +1,3 @@
+Niciun router nu are tabel de rutare pentru toate path-urile.
+Routarea se face din aproape in aproape, prin subretele mai mici.
+=> Algoritm distribuit!

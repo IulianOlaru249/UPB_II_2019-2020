@@ -1,0 +1,107 @@
+Olaru Gabriel Iulian
+324 CC
+
+*******************************************************************************
+Subscriber
+*******************************************************************************
+
+    The subscriber opens socket and connecs to server. Right after sends an 
+empty message with the client id so server knows how to handle the request. 
+If the connection will be refused (because another client with the same ID is 
+online) an empty message from the server will be received and the current 
+client will close.
+
+I. Sending messages to the server.
+   A message from the lient to the server takes the shape of struct tcp_message
+described in helpers.h file. The type field will be set to 1 or 2 so the
+server knows to make the difference between a subs/unsub request. The message
+will also have an id field besides the content field for ease of lookup on 
+server.
+
+II. Handling user commands.
+    User can send commands from the keyboard. The input is stored in a buffer 
+and parced. If a valid command is folowed by random characters it will still
+count as valid. E.g.: 'subscribe topic 1 asdasdasdas' is valid; 
+'exit sdadas' is valid. The extra characters will be ignored.
+
+    -Subscribe command: If the command has proper format a new message will
+be composed and sent to the server. It's content will be the topic and the
+subscription type(SF). If the subscription type is not mentioned (subscribe 
+topic <missing SF>) the server will make in 0 by default. If the topic is not
+presen the command is ignored.
+    -Unsubscribe command: If the command has proper format a new message will
+be composed and sent to the server. It's content will be the topic. If the 
+topic is missing the command will be ignored.
+    -Exit command: If the command has proper format the client will close, 
+otherwise the command is ignored.
+
+III. Handling messages from server.
+    Messages received from the server are notifications from topics the client 
+is subscribed to. The messages follow the format of struct cli_message 
+described in helpers.h. The client will receive the ip and port of udp client
+that send the message to the serverm the type of content and the message 
+content.
+    The content of the messages if parced based on the type, with the help of
+custom structs for each data dype, described in helpers.h and build according 
+with the homework requirements. The client is closed with shutdown instead of 
+close so that messages left in buffer will finish transmitting.
+
+*******************************************************************************
+server
+*******************************************************************************
+
+    The server opens two sockets:
+        TCP: to listen for new tcp clients and open new sockets for them.
+        UDP: to receive udp messages from udp clients.
+
+I. Handling data.
+    In order to be as efficient as possible, the server stores the socket 
+associated with a client id in a map, so the lookup of a client on one 
+socket is O(1).
+    Each client id is associated with a struct struct 
+tcp_client described in helpers.h. This way to lookup what client has that id
+is O(1). The struct stores the socket associated with the client, is status
+(online/offline) and a backlog for messages received while they were offline 
+if SF is set.
+    Eeach topic has associated with it a list of client ids and their 
+subscription types(SF). This way, when a notification of that topic needs to be
+sent, the lookup of the users subscribed to that topic is O(1).
+
+II. Handling clients.
+    If data has been received on the tcp socket that listens for clients then
+the server accepts the connection and turns off Neagle's algorithm. It then 
+waits for a message with the client id. It looksup the client id in the data 
+base. If it is a new id a new entry is created. If it is an existing id but the
+client is offline, the client is marked as online and messgaes from the backlog 
+are sent to him. If the client is already online, the server closes the socket.
+This way two clients with the same ID cannot be online at the same time. This 
+is the reason we can use maps. There will be no duplicate keys.
+
+III. Handling TCP messages.
+    If data has been received on a tcp client socket it is stored in a 
+buffer and parced with the help of the struct tcp_message described in 
+helpers.h. The server decides wheter is a subscribtion or unsubscription
+request based on the type specified in the message.
+    -subscribe request: server looks up the topic in data base and if it is a
+new one it will create a new entry with the user who issued the request 
+subscribed to id. If it is an olready existing topic its subscriber list is 
+checked. If the client is already subscribed but wants a different subscription 
+type, the type is updated. If they are subscribed with the same type, the 
+request is ignored. If the client is a new subscriber, they are added to the 
+list. This way it is ensured the same client will not be subscribed to the same
+topic twice. Takes O(n) because of the lookup of client id in sublist.
+    -unsubscrube requests: The topic is lookedup. If it does not exist the 
+request is ignored. Otherwise, the client id is lookedup in the subscriber list 
+of the topic and removed if it exists. Takes O(n) because of the lookup of 
+client id in sublist.
+    -empty message: means the client disconnected.
+
+IV. Handling UDP messages.
+    If data has been received on the udp socket, it is stored in a buffer. 
+The buffer is parced with the struct udp_message described in helpers.h. 
+The topic is the looked up in the database and if it does not exist it is 
+ignored, since it means it has no subscribers (a new topic is added only 
+when a client subscribes to it for the first time). Otherwise, a new message 
+for the clients is composed, based on struct cli_message described in 
+helpers.h. For every subscriber, send the message is they are online or store
+it in the client's backlog if they are offline with SF = 1.

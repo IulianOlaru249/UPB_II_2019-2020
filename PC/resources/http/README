@@ -1,0 +1,219 @@
+Olaru Gabriel Iulian
+324 CC
+
+    The client can create a new account, login, gain access to the library,
+see books, get details about books, delete books and logout.
+
+Parson
+-------------------------------------------------------------------------------
+
+    Parson is the library used to create and parce JSON objects.
+
+    i) Creation
+    A root object is created and its value is extracted. The json value is
+updated with the fields and their value and serialized into a string to be used
+for the requests.
+
+    ii) Parceing
+    If it is an array there can be more JSON objects to work with. The same 
+flow applies, but in a loop. A root object is created and its value is 
+extracted. The fields are accessed by name and their values are printed to the
+client.
+
+
+*******************************************************************************
+Register
+*******************************************************************************
+
+        When the clinet wants to create a new account they will be prompted
+    with a field for username and password. The username and the password can 
+    not contain blank spaces. If there are any, the input is broken down in 
+    substrings. What comes before the black line is considered valid. The 
+    password and username are stored on the heap and freed tight after a 
+    responce from server arrives. This way they do not linger in memory for 
+    too long.
+        A POST request is composed and sent to the server. The boody of the 
+    request is a json, pparced with the Parson library. Error handling 
+    (already existing username) is done by the server. The client will just 
+    be prompted with the message received from the server or with a message
+    of success.
+
+    Request format
+    ===========================================================
+    POST /api/v1/tema/auth/register HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Content-Type: application/json
+    Content-Length: 39
+
+    {"username":"gigel","password":"gigel"}
+    ===========================================================
+
+
+*******************************************************************************
+Login
+*******************************************************************************
+
+        When the clinet wants to create a new account they will be prompted
+    with a field for username and password. The username and the password can 
+    not contain blank spaces. If there are any, the input is broken down in 
+    substrings. What comes before the black line is considered valid. The 
+    password and username are stored on the heap and freed tight after a 
+    responce from server arrives. This way they do not linger in memory for 
+    too long.
+        A POST request is send to the server. The boody of the request is a 
+    json, pparced with the Parson library. Error handling (bad username, 
+    bad password) is done by the server. The client will just be prompted with 
+    the message received from the server or with a message of success.
+    
+        Cookie: the cooke is extracted from the answer and stored in memory.
+    There will be a new Cookie for every login so there can not be two clients
+    with the same Cookie.
+        JWT: In case of multiple logins in a row, a client
+    should not have access to the library of the previous client. In order to 
+    make sure of this, the JWT is set to NULL at every new login.
+        This way, even if an user wants to login again on the same account
+    (client trying to login on an already logged in account) nothing will go
+    badly. The user will just have a new cookie and will need access tot the 
+    library again.
+
+    Request format.
+    ===========================================================
+    POST /api/v1/tema/auth/login HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Content-Type: application/json
+    Content-Length: 42
+
+    {"username":"gigel","password":"gigel"}
+    ===========================================================
+
+
+*******************************************************************************
+Enter Library
+*******************************************************************************
+
+        First the existence of a cookie is verified (a client that did not log 
+    into their account should not be granted access to the library.) If the 
+    client does not have a cookie, they will be prompted with an error message.
+        A GET request is send to the server. Error handling is done by the
+    server. The client will just be prompted with the message received from the
+    server or with a message of success.
+
+    Request format.
+    ===========================================================
+    GET /api/v1/tema/library/access HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Cookie: connect.sid= <cookie>
+    ===========================================================
+
+
+*******************************************************************************
+Get Books
+*******************************************************************************
+
+        First the existence of a JWT is verified (a client that does not have 
+    access to the library shoult not be allowed to see or change the books.) If
+    the client does not have a cookie, they will be prompted with an error 
+    message.
+        A GET request is send to the server. Error handling is done by the
+    server. The client will just be prompted with the message received from the
+    server or with the list of books in case of success.
+        The list is composed of the book id, followed by the title. The data is
+    parced from the server responce (an array of JSON objects) with the Parson
+    library.
+
+    Request format.
+    ===========================================================
+    GET /api/v1/tema/library/books HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Authorization: Bearer <JWT>
+    ===========================================================
+
+
+*******************************************************************************
+Get Book
+*******************************************************************************
+
+        First the existence of a JWT is verified (a client that does not have 
+    access to the library shoult not be allowed to see or change the books.) If
+    the client does not have a cookie, they will be prompted with an error 
+    message.
+        The client will see a prompt asking for a book id.
+        A GET request is send to the server. Error handling is done by the
+    server (id not int, id negative, non existing id). The client will just 
+    be prompted with the message received from the server or with the book 
+    details if success.
+        The details consist in title, author, genre, publisher, page count.
+    The data is parced from the server responce (an array of JSON objects with 
+    only one object) with the Parson library.
+
+    Request format.
+    ===========================================================
+    GET /api/v1/tema/library/books/1339 HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Authorization: Bearer <JWT>
+    ===========================================================
+
+*******************************************************************************
+Add Book
+*******************************************************************************
+        First the existence of a JWT is verified (a client that does not have 
+    access to the library shoult not be allowed to see or change the books.) If
+    the client does not have a cookie, they will be prompted with an error 
+    message.
+        The client will see a promps asking for a title, author, genre, 
+    publisher and page count. Any entry with a page count > 0 is considered
+    valid (Books with missing fields, books with spaces in the fields, books 
+    with special characters in the fields).
+          A GET request is send to the server. A succesful messages is showed if
+    an answer arrives.
+
+    Request format.
+    ===========================================================
+    POST /api/v1/tema/library/books HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Authorization: Bearer <JWT>
+    Content-Type: application/json
+    Content-Length: 99
+
+    {"title":"Xanax","author":"Liviu Iancu","genre":"Contemporary",
+        "page_count":500,"publisher":"Trei"}
+    ===========================================================
+
+
+*******************************************************************************
+Delete Book
+*******************************************************************************
+        First the existence of a JWT is verified (a client that does not have 
+    access to the library shoult not be allowed to see or change the books.) If
+    the client does not have a cookie, they will be prompted with an error 
+    message.
+        The client will see a prompt asking for a book id.
+        A DELETE request is send to the server. Error handling is done by the
+    server (id not int, id negative, non existing id). The client will just 
+    be prompted with the message received from the server or with a succes 
+    message.
+
+    Request format.
+    ===========================================================
+    DELETE /api/v1/tema/library/books/1339 HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Authorization: Bearer <JWT>
+    ===========================================================
+
+
+*******************************************************************************
+Logout
+*******************************************************************************
+        First the existence of a cookie is verified (a client that did not log 
+    into their account should not be able to logout.) If the client does not 
+    have a cookie, they will be prompted with an error message.
+        A GET request is send to the server. Error handling is done by the
+    server. The client will just be prompted with the message received from the
+    server or with a message of success.
+
+    Request format.
+    ===========================================================
+    GET /api/v1/tema/auth/logout HTTP/1.1
+    Host: ec2-3-8-116-10.eu-west-2.compute.amazonaws.com
+    Cookie: connect.sid= <cookie>
+    ===========================================================

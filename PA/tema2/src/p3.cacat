@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>
+#include <limits>
+
+using namespace std;
+typedef std::numeric_limits<double> dbl;
+
+const int kNmax = 100000;
+const int kInf = 0x3f3f3f3f;
+
+int n;
+int m;
+double e;
+int source;
+int destination;
+vector<pair<int, int>> adj[kNmax];
+vector<pair<int, int>> parent(kNmax);
+
+void dijkstra(int source, vector<int> &d) {
+    d[source] = 0;
+
+    set<pair<int, int>> pq;
+    pq.insert({d[source], source});
+
+    while (!pq.empty()) {
+        // Scoatem top-ul.
+        auto top = pq.begin();
+        int u = top->second;
+        pq.erase(top);
+
+        // Ii parcurgem toti vecinii.
+        for (const auto &node : adj[u]) {
+            int v = node.first;
+            int w = node.second;
+
+            // Se imbunatateste distanta?
+            if (d[v] > d[u] + w) {
+                parent[v].first = u;
+                parent[v].second = w;
+                // Scoatem vechea pereche din set.
+                pq.erase({d[v], v});
+                // Actualizam distanta si inseram din nou in set.
+                d[v] = d[u] + w;
+                pq.insert({d[v], v});
+            }
+        }
+    }
+}
+
+void read_input() {
+    ifstream fin("p3.in");
+    fin >> n >> m >> e;
+    for (int i = 1, x, y, w; i <= m; i++) {
+        fin >> x >> y >> w;
+        adj[x].push_back(make_pair(y, w));
+    }
+    fin.close();
+}
+
+vector<int> get_result() {
+    vector<int> d(n + 1, kInf);
+    dijkstra(1, d);
+    return d;
+}
+
+void print_input() {
+    cout << m << " " << n << " " << e;
+    for (int u = 1; u <= n; u++)
+        for (auto const &v : adj[u]) {
+            cout << endl;
+            cout << u << " " << v.first << " " << v.second;
+        }
+}
+
+ofstream fout("p3.out");
+void print_path(int u, double energy) {
+    if (u == 1) {
+        fout.precision(dbl::max_digits10);
+        fout << energy << endl
+             << u << " ";
+        return;
+    }
+
+    print_path(parent[u].first,
+        energy *= ((double)1 - (double)parent[u].second / 100));
+
+    fout << u << " ";
+}
+
+int main(void) {
+    read_input();
+    get_result();
+    print_path(n, e);
+    fout.close();
+    return 0;
+}

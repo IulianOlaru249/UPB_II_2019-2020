@@ -1,0 +1,92 @@
+2.
+
+a)
+single-v4.protocoale.xyz. 282	IN	A	127.0.0.1
+
+single.protocoale.xyz.	146	IN	A	127.0.0.1
+
+dorinel.protocoale.xyz.	300	IN	A	127.42.0.0
+
+multi-v4.protocoale.xyz. 300	IN	A	127.4.4.4
+multi-v4.protocoale.xyz. 300	IN	A	127.3.3.3
+multi-v4.protocoale.xyz. 300	IN	A	127.1.1.1
+multi-v4.protocoale.xyz. 300	IN	A	127.2.2.2
+
+multi.protocoale.xyz.	300	IN	A	127.1.1.1
+multi.protocoale.xyz.	300	IN	A	127.4.4.4
+multi.protocoale.xyz.	300	IN	A	127.2.2.2
+multi.protocoale.xyz.	300	IN	A	127.3.3.3
+
+pc.protocoale.xyz.	300	IN	CNAME	pcom.protocoale.xyz.
+pcom.protocoale.xyz.	299	IN	CNAME	protocoale.protocoale.xyz.
+protocoale.protocoale.xyz. 299	IN	A	127.42.42.42
+
+b) 
+single-v6.protocoale.xyz. 18	IN	AAAA	::1
+
+single.protocoale.xyz.	12	IN	AAAA	::1
+
+multi-v6.protocoale.xyz. 3	IN	AAAA	::2
+multi-v6.protocoale.xyz. 3	IN	AAAA	::1
+multi-v6.protocoale.xyz. 3	IN	AAAA	::4
+multi-v6.protocoale.xyz. 3	IN	AAAA	::3
+
+multi.protocoale.xyz.	300	IN	AAAA	::2
+multi.protocoale.xyz.	300	IN	AAAA	::3
+multi.protocoale.xyz.	300	IN	AAAA	::4
+multi.protocoale.xyz.	300	IN	AAAA	::1
+
+c)
+protocoale.xyz.		288	IN	MX	10 alt1.gmail-smtp-in.l.google.com.
+protocoale.xyz.		288	IN	MX	30 alt3.gmail-smtp-in.l.google.com.
+protocoale.xyz.		288	IN	MX	20 alt2.gmail-smtp-in.l.google.com.
+
+d)
+dorinel.protocoale.xyz.	291	IN	NS	potato.dfilip.xyz.
+
+e)
+; <<>> DiG 9.11.3-1ubuntu1.11-Ubuntu <<>> google.com 60.248.28.5 +noall +answer
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 58927
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		82	IN	A	172.217.18.78
+
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Wed Apr 15 08:46:43 EEST 2020
+;; MSG SIZE  rcvd: 55
+
+; <<>> DiG 9.11.3-1ubuntu1.11-Ubuntu <<>> google.com 151.1.217.27 +noall +answer
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 38414
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		54	IN	A	172.217.18.78
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53)
+;; WHEN: Wed Apr 15 08:47:11 EEST 2020
+;; MSG SIZE  rcvd: 55
+
+g)
+dig +trace test.dorinel.protocoale.xyz
+test.dorinel.protocoale.xyz;
+; <<>> DiG 9.11.3-1ubuntu1.11-Ubuntu <<>> +trace test.dorinel.protocoale.xyz
+;; global options: +cmd
+;; Received 51 bytes from 127.0.0.53#53(127.0.0.53) in 0 ms

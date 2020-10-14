@@ -1,0 +1,43 @@
+Olaru Gabriel Iulian
+324CC
+
+********************************************************************************
+Modul de functionare.
+
+    Routerul functioneaza cu o tabela arp statica. O astfel de tabela este 
+formata dintr-un vector de structuri arp_entry, descrise in arp.h.
+
+    I. Inainte de a incepe bucla in care routerul va functiona, se va aloca si 
+tabela de rutare, intr-un vector ce se realoca dinamic pentru a acomoda oricate
+structuri de tipul arp_table_entry, descrise in rtable_parser.h.
+
+    II. Intr-o bucla infinita, roter-ul urmeaza sa primeasca pachete. La primirea
+unui astfel de pachet se izoleaza header-ul ethernet. Se decide apoi daca este
+un pachet ARP sau ICMP. 
+        -Daca este un pachet ARP, se izoleaza header-ul arp si se
+    trimite un ARP reply. 
+        -Daca este un pachet ICMP, se izoleaza headerele IP si ICMP
+   
+    III.  Se verifica apoi ca checksum-ul pachetului sa fie corespunzator. 
+Daca nu, pachetul urmeaza sa fie distrus.
+
+    IV. Se verifica daca TTL-ul pachetului este > 1 (daca pachetul mai poate 
+calatorii in retea pana sa expire). In caz negativ, pachetul curent va fi 
+distrus iar routerul va trimite un pachet ICMP de tipul TIMEOUT inapoi sursei de
+provenienta a pachetului original.
+
+    V. Se verifica daca pachetul era destinat routerului, de tim Echo Reply. 
+Daca da, routerul va trimite sursei un pachet ICMP ECHO REPLY.
+
+    VI. Se cauta in tabela de rutare cea mai buna ruta. In caz ca nu se va gasi
+un candidat potrivit, routerul va trimite sursei un pachet ICMP HOST UNREACHABLE
+iar pachetul original va fi distrus.
+
+    VII. Se va cauta apoi adresa mac a next-hop-ului in tabela ARP.
+
+    VIII. Pachetul va fi trimis pe interfata celei mai bune rute gasite la pasii
+anteriori.
+
+obs: parsarea tabelului de ruatre este liniara. Pentru complexitati mai bune 
+(O(1)), dar compromitand memoria (exponential) se pot folosi trie pentru longest
+prefix match.

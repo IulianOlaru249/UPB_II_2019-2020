@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "types.h": "c",
+        "socket.h": "c",
+        "in.h": "c",
+        "helpers.h": "c",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp"
+    }
+}

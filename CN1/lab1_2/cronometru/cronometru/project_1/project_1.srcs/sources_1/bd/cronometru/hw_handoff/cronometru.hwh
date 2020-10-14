@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue May 12 08:18:21 2020" VIVADOVERSION="2019.2">
+
+  <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="cronometru" PACKAGE="csg324" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="O" LEFT="7" NAME="An_0" RIGHT="0" SIGIS="undef" SIGNAME="display_7_seg_0_An">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="display_7_seg_0" PORT="An"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DP_0" SIGIS="undef" SIGNAME="display_7_seg_0_DP">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="display_7_seg_0" PORT="DP"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="6" NAME="Seg_0" RIGHT="0" SIGIS="undef" SIGNAME="display_7_seg_0_Seg">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="display_7_seg_0" PORT="Seg"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="clk_in_0" SIGIS="undef" SIGNAME="External_Ports_clk_in_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="divizor_ceas_0" PORT="clk_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="clk_out_led_0" SIGIS="undef" SIGNAME="divizor_ceas_0_clk_out_led">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="divizor_ceas_0" PORT="clk_out_led"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="pause_0" SIGIS="undef" SIGNAME="External_Ports_pause_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="numarator_0_59_0" PORT="pause"/>
+        <CONNECTION INSTANCE="numarator_0_59_1" PORT="pause"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="reset_0" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="numarator_0_59_0" PORT="reset"/>
+        <CONNECTION INSTANCE="numarator_0_59_1" PORT="reset"/>
+        <CONNECTION INSTANCE="divizor_ceas_0" PORT="reset"/>
+        <CONNECTION INSTANCE="display_7_seg_0" PORT="reset"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/bin2bcd_0" HWVERSION="1.0" INSTANCE="bin2bcd_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bin2bcd" VLNV="xilinx.com:module_ref:bin2bcd:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_bin2bcd_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="5" NAME="bin_val" RIGHT="0" SIGIS="undef" SIGNAME="numarator_0_59_1_up_counter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="numarator_0_59_1" PORT="up_counter"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="bcd0" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_0_bcd0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="display_7_seg_0" PORT="BCD0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="bcd1" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_0_bcd1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="display_7_seg_0" PORT="BCD1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/bin2bcd_1" HWVERSION="1.0" INSTANCE="bin2bcd_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="bin2bcd" VLNV="xilinx.com:module_ref:bin2bcd:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_bin2bcd_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="5" NAME="bin_val" RIGHT="0" SIGIS="undef" SIGNAME="numarator_0_59_0_up_counter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="numarator_0_59_0" PORT="up_counter"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="bcd0" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_1_bcd0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="display_7_seg_0" PORT="BCD2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="bcd1" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_1_bcd1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="display_7_seg_0" PORT="BCD3"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/display_7_seg_0" HWVERSION="1.0" INSTANCE="display_7_seg_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="display_7_seg" VLNV="xilinx.com:module_ref:display_7_seg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_display_7_seg_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="clk_out_seg" SIGIS="undef" SIGNAME="divizor_ceas_0_clk_out_seg">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="divizor_ceas_0" PORT="clk_out_seg"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="BCD0" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_0_bcd0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_0" PORT="bcd0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="BCD1" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_0_bcd1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_0" PORT="bcd1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="BCD2" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_1_bcd0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_1" PORT="bcd0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="BCD3" RIGHT="0" SIGIS="undef" SIGNAME="bin2bcd_1_bcd1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_1" PORT="bcd1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="An" RIGHT="0" SIGIS="undef" SIGNAME="display_7_seg_0_An">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="An_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="Seg" RIGHT="0" SIGIS="undef" SIGNAME="display_7_seg_0_Seg">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="Seg_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="DP" SIGIS="undef" SIGNAME="display_7_seg_0_DP">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="DP_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/divizor_ceas_0" HWVERSION="1.0" INSTANCE="divizor_ceas_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="divizor_ceas" VLNV="xilinx.com:module_ref:divizor_ceas:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_divizor_ceas_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="clk_in" SIGIS="undef" SIGNAME="External_Ports_clk_in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_in_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="clk_out_led" SIGIS="undef" SIGNAME="divizor_ceas_0_clk_out_led">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_out_led_0"/>
+            <CONNECTION INSTANCE="numarator_0_59_0" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="clk_out_seg" SIGIS="undef" SIGNAME="divizor_ceas_0_clk_out_seg">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="display_7_seg_0" PORT="clk_out_seg"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/numarator_0_59_0" HWVERSION="1.0" INSTANCE="numarator_0_59_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="numarator_0_59" VLNV="xilinx.com:module_ref:numarator_0_59:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_numarator_0_59_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="divizor_ceas_0_clk_out_led">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="divizor_ceas_0" PORT="clk_out_led"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pause" SIGIS="undef" SIGNAME="External_Ports_pause_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pause_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="carry_out" SIGIS="undef" SIGNAME="numarator_0_59_0_carry_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="numarator_0_59_1" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="5" NAME="up_counter" RIGHT="0" SIGIS="undef" SIGNAME="numarator_0_59_0_up_counter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_1" PORT="bin_val"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/numarator_0_59_1" HWVERSION="1.0" INSTANCE="numarator_0_59_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="numarator_0_59" VLNV="xilinx.com:module_ref:numarator_0_59:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="cronometru_numarator_0_59_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="numarator_0_59_0_carry_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="numarator_0_59_0" PORT="carry_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="reset" SIGIS="rst" SIGNAME="External_Ports_reset_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="reset_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pause" SIGIS="undef" SIGNAME="External_Ports_pause_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pause_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="carry_out" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="5" NAME="up_counter" RIGHT="0" SIGIS="undef" SIGNAME="numarator_0_59_1_up_counter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bin2bcd_0" PORT="bin_val"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>
